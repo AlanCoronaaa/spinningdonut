@@ -32,7 +32,8 @@ theta_spacing = 10
 # we will change it phi_spacing later for faster spinning
 phi_spacing = 1 
 
-chars = ".,-~:;=!*#$@"  # luminance index
+# Luminance index
+chars = ".,-~:;=!*#$@"  
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -72,8 +73,10 @@ while run:
             m = math.cos(B)
             n = math.sin(B)
             t = c * h * g - f * e
-            x = int(x_offset + 40 * D * (l * h * m - t * n))  # 3D x coordinate after rotation
-            y = int(y_offset + 20 * D * (l * h * n + t * m))  # 3D y coordinate after rotation
+            # This is for 3D x coordinate after the rotation
+            x = int(x_offset + 40 * D * (l * h * m - t * n)) 
+            # This is for 3D y coordinate after the rotation
+            y = int(y_offset + 20 * D * (l * h * n + t * m))  
             o = int(x + columns * y)  
             N = int(8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n))  # luminance index
             if rows > y and y > 0 and x > 0 and columns > x and D > z[o]:
