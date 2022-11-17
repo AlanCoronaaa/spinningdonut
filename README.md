@@ -1,4 +1,4 @@
-# spinningdonut
+# Spinning Donut in Python
 
 How does a spinning donut work?
 
