@@ -1,3 +1,5 @@
+# Writing spinning donut in nano using WSL for the first time 😄
+
 import pygame
 import math
 import colorsys
@@ -23,10 +25,12 @@ screen_size = rows * columns
 x_offset = columns / 2
 y_offset = rows / 2
 
-A, B = 0, 0  # rotating animation
+# Rotating animation
+A, B = 0, 0  
 
 theta_spacing = 10
-phi_spacing = 1 # for faster rotation change to 2, 3 or more, but first c
+# we will change it phi_spacing later for faster spinning
+phi_spacing = 1 
 
 chars = ".,-~:;=!*#$@"  # luminance index
 
@@ -37,11 +41,11 @@ display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Donut')
 font = pygame.font.SysFont('Arial', 18, bold=True)
 
+# The HSV converting to RGB function 
 def hsv2rgb(h, s, v):
     return tuple(round(i * 255) for i in colorsys.hsv_to_rgb(h, s, v))
 
-
-
+# The text display function
 def text_display(letter, x_start, y_start):
     text = font.render(str(letter), True, hsv2rgb(hue, 1, 1))
     display_surface.blit(text, (x_start, y_start))
@@ -52,8 +56,8 @@ while run:
 
     screen.fill((black))
 
-    z = [0] * screen_size  # Donut ==> Fills donut space
-    b = [' '] * screen_size  # Background ==> Fills empty space
+    z = [0] * screen_size  
+    b = [' '] * screen_size  
 
     for j in range(0, 628, theta_spacing):  # from 0 to 2pi
         for i in range(0, 628, phi_spacing): 
